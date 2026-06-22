@@ -1,0 +1,128 @@
+{
+  "name": "Thiago Gazaroli Cardoso",
+  "basicInfo": {
+    "title": "Full-Stack Developer",
+    "location": "Brazil",
+    "email": "tgazaroli@gmail.com",
+    "phone": "",
+    "links": [
+      {
+        "label": "LinkedIn",
+        "url": "https://linkedin.com/in/thiago-gazaroli"
+      }
+    ]
+  },
+  "summary": "",
+  "experience": [
+    {
+      "role": "Software Developer",
+      "company": "WEBJUMP",
+      "location": "Remote",
+      "startDate": "Apr/2024",
+      "endDate": "Present",
+      "responsibilities": [
+        "Develop scalable web applications using React.js, TypeScript, and Python (FastAPI).",
+        "Build and maintain REST APIs supporting enterprise systems and high-volume data workflows.",
+        "Implement user-facing interfaces integrated with Adobe Experience Manager (AEM).",
+        "Collaborate with cross-functional teams in an Agile environment, contributing to architectural and technical decisions.",
+        "Improve system performance through refactoring, frontend optimization, and backend improvements."
+      ],
+      "keyResults": [
+        "Contributed to the development of enterprise systems in the oil and gas sector, supporting operational efficiency and large-scale workflows.",
+        "Helped deliver software solutions that contributed to multi-million cost savings through automation and process optimization.",
+        "Improved application performance and user experience through structured frontend and backend optimizations."
+      ],
+      "skills": ["React.js", "TypeScript", "HTML", "Scrum", "Java 11", "PageSpeed", "English-speaking environment", "Python", "FastAPI", "Claude AI"]
+    },
+    {
+      "role": "Full-Stack Developer",
+      "company": "Wise Systems",
+      "location": "Remote",
+      "startDate": "Aug/2023",
+      "endDate": "Apr/2024",
+      "responsibilities": [
+        "Developed backend services using Python (Django) and REST APIs.",
+        "Built modern web interfaces using React.js and Next.js.",
+        "Implemented authentication and access control with Keycloak.",
+        "Collaborated with stakeholders to design and deliver scalable features."
+      ],
+      "keyResults": [
+        "Migrated a legacy system to a web-based platform, improving accessibility and operational efficiency.",
+        "Improved codebase maintainability through standardization and build automation."
+      ],
+      "skills": ["Python", "Django", "React.js", "Next.js", "Docker", "Keycloak", "Ant Design", "TypeScript", "Prisma", "Nest.js"]
+    },
+    {
+      "role": "Front-End Developer",
+      "company": "Centro de Inovação EDGE",
+      "location": "Remote",
+      "startDate": "Nov/2022",
+      "endDate": "Oct/2023",
+      "responsibilities": [
+        "Refactored unstructured projects, promoting standardization, scalability, and reducing production bugs.",
+        "Provided technical mentorship to junior developers and conducted continuous code reviews.",
+        "Implemented reusable components with React.js and Redux, following sound architectural practices.",
+        "Participated in Scrum rituals and tracked task progress."
+      ],
+      "keyResults": [
+        "Significantly reduced bug occurrences post-deployment.",
+        "Improved code maintainability and application stability."
+      ],
+      "skills": ["React.js", "Redux", "TypeScript", "Scrum", "Code Review", "Refactoring", "Git", "Azure Boards", "Jest", "Component-driven architecture"]
+    },
+    {
+      "role": "Full-Stack Developer",
+      "company": "Oops Telecom",
+      "location": "AL- Brazil",
+      "startDate": "Sep/2021",
+      "endDate": "Nov/2022",
+      "responsibilities": [
+        "Created REST APIs and implemented hexagonal architecture using Go.",
+        "Developed admin panels with Vue.js and Quasar Framework.",
+        "Integrated Keycloak for secure authentication and access control.",
+        "Trained internal users to ensure effective platform usage."
+      ],
+      "keyResults": [
+        "Enhanced asset tracking of high-value equipment and improved company asset control."
+      ],
+      "skills": ["Go (Golang)", "Vue.js", "Quasar", "Keycloak", "Authentication", "REST APIs", "Hexagonal Architecture", "Technical Support / Help Desk", "JavaScript"]
+    },
+    {
+      "role": "Full-Stack Developer",
+      "company": "DIT - IFAL",
+      "location": "Remote",
+      "startDate": "Mar/2021",
+      "endDate": "Aug/2024",
+      "responsibilities": [
+        "Led frontend development using React.js and TypeScript.",
+        "Designed REST APIs with Go, integrated with PostgreSQL and MongoDB.",
+        "Coordinated frontend standards, documentation, and architectural improvements.",
+        "Delivered scalable backend-frontend integrations."
+      ],
+      "keyResults": [
+        "Reduced technical debt through structured refactoring initiatives.",
+        "Improved system scalability and long-term maintainability.",
+        "Delivered consistent full-stack features across multiple institutional systems."
+      ],
+      "skills": ["React.js", "TypeScript", "Go (Golang)", "PostgreSQL", "MongoDB", "Scrum", "Technical Documentation", "TanStack", "FastAPI"]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor's in Information Systems",
+      "school": "IFAL - Federal Institute of Alagoas",
+      "location": "AL- Brazil",
+      "startDate": "2020",
+      "endDate": "2023",
+      "details": "Participated in projects as a mobile lab monitor with React Native. Contributed to the institution's main development lab."
+    }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "level": "Advanced – Excellent reading and writing skills; conversational speaking level"
+    }
+  ],
+  "certifications": [],
+  "skills": []
+}

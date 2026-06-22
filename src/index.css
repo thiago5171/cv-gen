@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap");
+
+:root {
+  --bg: #f7efe3;
+  --bg-2: #f3f7f4;
+  --ink: #1e1b16;
+  --muted: #5c5b57;
+  --accent: #ff7a59;
+  --accent-2: #1f8a70;
+  --card: #ffffff;
+  --border: #e9dbc9;
+  --shadow-soft: 0 12px 30px -20px rgba(31, 24, 18, 0.3);
+  --shadow-strong: 0 16px 30px -24px rgba(31, 24, 18, 0.5);
+  --font-display: "Space Grotesk", "Trebuchet MS", sans-serif;
+  --font-sans: "Source Sans 3", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "Consolas", monospace;
+
+  font: 16px/1.5 var(--font-sans);
+  color: var(--ink);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 122, 89, 0.15), transparent 50%),
+    radial-gradient(circle at 80% 0%, rgba(31, 138, 112, 0.12), transparent 45%),
+    linear-gradient(180deg, #f7efe3 0%, #f6f4ec 40%, #f3f7f4 100%);
+  color: var(--ink);
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.5;
+  filter: blur(40px);
+}
+
+body::before {
+  background: rgba(255, 122, 89, 0.25);
+  top: -120px;
+  left: -80px;
+}
+
+body::after {
+  background: rgba(31, 138, 112, 0.25);
+  bottom: -140px;
+  right: -60px;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  color: var(--ink);
+}
+
+h2 {
+  font-size: 22px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+p {
+  margin: 0;
+  color: var(--muted);
+}
+
+button,
+select,
+textarea {
+  font-family: inherit;
+}
+
+@media (max-width: 960px) {
+  :root {
+    font-size: 15px;
+  }
+}

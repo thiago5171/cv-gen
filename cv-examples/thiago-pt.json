@@ -1,0 +1,130 @@
+{
+  "name": "Thiago Gazaroli Cardoso",
+  "basicInfo": {
+    "title": "Desenvolvedor Full Stack",
+    "location": "Brasil",
+    "email": "tgazaroli@gmail.com",
+    "phone": "+55 82 9 99458194",
+    "links": [
+      {
+        "label": "LinkedIn",
+        "url": "https://linkedin.com/in/thiago-gazaroli"
+      }
+    ]
+  },
+  "summary": "",
+  "experience": [
+    {
+      "role": "Desenvolvedor de Software AEM",
+      "company": "WEBJUMP",
+      "location": "Remoto",
+      "startDate": "Abr/2024",
+      "endDate": "Emprego atual",
+      "responsibilities": [
+        "Desenvolvimento de interfaces com HTL, React.js, TypeScript integradas ao Adobe Experience Manager (AEM).",
+        "Aplicação de pixel perfect e práticas de otimização que contribuíram diretamente para melhoria do PageSpeed e experiência do usuário.",
+        "Participação ativa na definição técnica, refinamento de requisitos, code reviews e entregas contínuas utilizando Scrum e Kanban.",
+        "Suporte técnico ao time durante todo o ciclo de vida do projeto, desde a concepção até o deploy."
+      ],
+      "keyResults": [
+        "Melhoria no desempenho de aplicações e nota do PageSpeed após refatorações e ajustes técnicos.",
+        "Consolidação de relacionamento com grandes clientes por meio da entrega de soluções sólidas e bem documentadas."
+      ],
+      "skills": ["React.js", "TypeScript", "AEM", "HTL", "Scrum", "Java 11", "CSS", "PageSpeed", "Pixel Perfect"]
+    },
+    {
+      "role": "Desenvolvedor Full Stack",
+      "company": "Wise Systems",
+      "location": "Remoto",
+      "startDate": "Ago/2023",
+      "endDate": "Abr/2024",
+      "responsibilities": [
+        "Desenvolvimento full-stack com Django (Python) no backend e React.js/Next.js no frontend.",
+        "Utilização do Ant Design para criação de interfaces modernas e responsivas.",
+        "Colaboração direta com o time e stakeholders para garantir entregas técnicas com alto padrão de qualidade.",
+        "Integração da aplicação com a autenticação via Keycloak."
+      ],
+      "keyResults": [
+        "Migração bem-sucedida de um sistema legado local para uma plataforma web para o Sebrae AL, ampliando o acesso, a produtividade e a troca de informações.",
+        "Ganho técnico significativo com automações de build e deploy, além de padronização e a escalabilidade do código."
+      ],
+      "skills": ["Django", "Python", "React.js", "Next.js", "Docker", "Keycloak", "Ant Design", "Git", "Kanban", "React Hook Form", "TypeScript"]
+    },
+    {
+      "role": "Desenvolvedor Front End",
+      "company": "Centro de Inovação EDGE",
+      "location": "Remoto",
+      "startDate": "Nov/2022",
+      "endDate": "Out/2023",
+      "responsibilities": [
+        "Refatoração de projetos desestruturados, promovendo padronização, escalabilidade e redução de bugs em produção.",
+        "Mentoria técnica de desenvolvedores menos experientes e revisão contínua de código.",
+        "Implementação de componentes reutilizáveis com React.js e Redux, seguindo boas práticas de arquitetura.",
+        "Participação em rituais Scrum e acompanhamento do progresso técnico das tarefas."
+      ],
+      "keyResults": [
+        "Redução significativa na ocorrência de bugs após entregas.",
+        "Melhoria geral da manutenibilidade do código e estabilidade das aplicações."
+      ],
+      "skills": ["React.js", "Redux", "TypeScript", "Scrum", "Code Review", "Refatoração", "Git", "Board do Azure"]
+    },
+    {
+      "role": "Desenvolvedor Full Stack",
+      "company": "Oops Telecom",
+      "location": "Arapiraca, AL",
+      "startDate": "Set/2021",
+      "endDate": "Nov/2022",
+      "responsibilities": [
+        "Criação de APIs REST e implementação de arquitetura hexagonal utilizando Go Lang.",
+        "Desenvolvimento de painéis administrativos com Vue.js e Quasar Framework.",
+        "Integração com Keycloak para autenticação segura e controle de acesso.",
+        "Treinamento de usuários internos para garantir uso adequado da plataforma."
+      ],
+      "keyResults": [
+        "Aumento da rastreabilidade de equipamentos de alto valor e controle eficiente de ativos da empresa."
+      ],
+      "skills": ["Go Lang", "Vue.js", "Quasar", "Keycloak", "REST APIs", "Hexagonal Architecture", "Help Desk", "JavaScript"]
+    },
+    {
+      "role": "Desenvolvedor Full Stack",
+      "company": "DIT - IFAL",
+      "location": "Remoto",
+      "startDate": "Mar/2021",
+      "endDate": "Ago/2024",
+      "responsibilities": [
+        "Liderança no desenvolvimento e manutenção de sistemas utilizando React.js no front-end.",
+        "Coordenação da equipe de front-end, garantindo boas práticas, entregas ágeis e documentação técnica consistente.",
+        "Desenvolvimento de APIs REST com Go Lang, integração com PostgreSQL e MongoDB, e suporte contínuo a melhorias de usabilidade."
+      ],
+      "keyResults": [
+        "Entrega de funcionalidades completas de ponta a ponta, garantindo consistência entre os componentes de backend e frontend.",
+        "Redução de dívida técnica e melhoria na escalabilidade do sistema por meio de atualizações arquiteturais."
+      ],
+      "skills": ["React.js", "TypeScript", "Go Lang", "PostgreSQL", "MongoDB", "Scrum", "Documentação Técnica", "TanStack"]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bacharelado em Sistemas de Informação",
+      "school": "IFAL - Instituto Federal de Alagoas",
+      "location": "Arapiraca, AL",
+      "startDate": "2020",
+      "endDate": "2023",
+      "details": "Atuei em projetos como monitor do Lab de dispositivos móveis. Participei do principal Lab de desenvolvimento da instituição."
+    }
+  ],
+  "languages": [
+    {
+      "name": "Inglês",
+      "level": "Nível Avançado – Ótimas habilidades de leitura e escrita, nível conversacional de fala"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Adobe Certified Professional – Adobe Experience Manager Assets Developer",
+      "issuer": "Adobe",
+      "year": "2024"
+    }
+  ],
+  "skills": []
+}

@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CV Generator Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "basicInfo", "experience", "education"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "basicInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string" },
+        "location": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label", "url"],
+            "properties": {
+              "label": { "type": "string" },
+              "url": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "summary": { "type": "string" },
+    "experience": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role",
+          "company",
+          "location",
+          "startDate",
+          "endDate",
+          "responsibilities",
+          "keyResults",
+          "skills"
+        ],
+        "properties": {
+          "role": { "type": "string" },
+          "company": { "type": "string" },
+          "location": { "type": "string" },
+          "startDate": { "type": "string" },
+          "endDate": { "type": "string" },
+          "summary": { "type": "string" },
+          "responsibilities": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "keyResults": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "skills": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "highlights": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["degree", "school", "location", "startDate", "endDate"],
+        "properties": {
+          "degree": { "type": "string" },
+          "school": { "type": "string" },
+          "location": { "type": "string" },
+          "startDate": { "type": "string" },
+          "endDate": { "type": "string" },
+          "details": { "type": "string" }
+        }
+      }
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "level"],
+        "properties": {
+          "name": { "type": "string" },
+          "level": { "type": "string" }
+        }
+      }
+    },
+    "certifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "issuer", "year"],
+        "properties": {
+          "name": { "type": "string" },
+          "issuer": { "type": "string" },
+          "year": { "type": ["string", "number"] }
+        }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
