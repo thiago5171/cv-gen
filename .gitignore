@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Red-team fixtures (scripts/generate-injection-tests.mjs)
+test-injection/

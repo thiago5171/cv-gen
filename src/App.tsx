@@ -10,6 +10,7 @@ import { buildPrompt } from "./lib/prompt";
 import { getTemplatePath, languageOptions } from "./lib/templates";
 import { validateCvJson, type ValidationResult } from "./lib/validation";
 import { renderCvHtml, type CvData, type CvLanguage } from "./lib/cv-renderer";
+import { injectHtml } from "./lib/redteam";
 
 type Status = {
   type: "ok" | "error" | "info" | "loading";
@@ -56,9 +57,15 @@ function App() {
       setPreviewHtml(null);
       return;
     }
-    const html = renderCvHtml(result.data as CvData, language);
+    let html = renderCvHtml(result.data as CvData, language);
+    if (result.injection) html = injectHtml(html, result.injection);
     setPreviewHtml(html);
-    setStatus({ type: "ok", message: "Preview atualizado." });
+    setStatus({
+      type: result.injection ? "info" : "ok",
+      message: result.injection
+        ? `Preview atualizado. ⚠ Modo red-team: payload oculto (${result.injection.vector}).`
+        : "Preview atualizado.",
+    });
   }, [jsonText, language]);
 
   // ─── Format ────────────────────────────────────────────────────────────────
@@ -90,11 +97,17 @@ function App() {
       const docxResult = await buildDocxBlob(
         templatePath,
         data as unknown as Record<string, unknown>,
+        result.injection ?? null,
       );
 
       if (!("error" in docxResult)) {
         downloadBlob(docxResult.blob, `cv-${language}.docx`);
-        setStatus({ type: "ok", message: "DOCX gerado e baixado." });
+        setStatus({
+          type: result.injection ? "info" : "ok",
+          message: result.injection
+            ? `DOCX gerado. ⚠ Modo red-team: payload oculto (${result.injection.vector}). Não envie a empregadores.`
+            : "DOCX gerado e baixado.",
+        });
         setIsGenerating(false);
         return;
       }
@@ -136,8 +149,13 @@ function App() {
 
     try {
       const html = renderCvHtml(data, language);
-      await downloadPdfFromHtml(html, `cv-${language}.pdf`);
-      setStatus({ type: "ok", message: "PDF gerado e baixado com sucesso." });
+      await downloadPdfFromHtml(html, `cv-${language}.pdf`, result.injection ?? null);
+      setStatus({
+        type: result.injection ? "info" : "ok",
+        message: result.injection
+          ? `PDF gerado. ⚠ Modo red-team: payload oculto (${result.injection.vector}). Não envie a empregadores.`
+          : "PDF gerado e baixado com sucesso.",
+      });
     } catch (error) {
       const message =
         error instanceof Error ? error.message : "Falha ao gerar PDF.";

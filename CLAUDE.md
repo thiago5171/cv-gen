@@ -34,6 +34,7 @@ JSON input → AJV validation (cv.schema.json) → CvData type
 - **`src/lib/validation.ts`** — AJV-based validation against `src/data/cv.schema.json`. Returns structured errors with JSON-path formatting.
 - **`src/lib/templates.ts`** — Language-to-template-path mapping. Currently active: `pt-BR` and `en-US`. `es-ES` and `de-DE` are declared but disabled.
 - **`src/lib/prompt.ts`** — Generates a copyable AI prompt with the JSON schema contract and sample data.
+- **`src/lib/redteam.ts`** — Red-team mode for testing the user's own resume screener. A top-level `_injection` key in the input JSON (`"texto"` or `{ text, vector }`) is stripped before validation and written as hidden text into the DOCX (`document.xml` run props) and PDF (real text added to the jsPDF instance after rasterization, since html2canvas output has no text layer). `scripts/generate-injection-tests.mjs` batch-generates the same vectors × payloads from the CLI.
 - **`src/data/samples.ts`** — `sampleMinimal` and `sampleFull` objects used as editor presets and in the prompt builder.
 
 ### DOCX template pipeline
