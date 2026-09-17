@@ -6,6 +6,8 @@ declare module "html2pdf.js" {
     toCanvas: () => Html2PdfInstance;
     toImg: () => Html2PdfInstance;
     toPdf: () => Html2PdfInstance;
+    get: (key: string) => Html2PdfInstance & Promise<unknown>;
+    then: (onFulfilled: (value: unknown) => unknown) => Html2PdfInstance;
     output: (type: string, options?: unknown) => Promise<Blob>;
     outputPdf: (type: string, options?: unknown) => Promise<Blob>;
     save: (filename?: string) => Promise<void>;

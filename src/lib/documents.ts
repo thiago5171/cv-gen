@@ -1,6 +1,12 @@
 import PizZip from "pizzip";
 import Docxtemplater from "docxtemplater";
 import html2pdf from "html2pdf.js";
+import {
+  injectDocx,
+  injectPdf,
+  type InjectionConfig,
+  type JsPdfLike,
+} from "./redteam";
 
 export type DocxRenderError = {
   message: string;
@@ -70,6 +76,7 @@ function prepareDocxData(
 export async function buildDocxBlob(
   templatePath: string,
   data: Record<string, unknown>,
+  injection: InjectionConfig | null = null,
 ): Promise<{ blob: Blob } | { error: DocxRenderError }> {
   try {
     const response = await fetch(templatePath);
@@ -94,6 +101,10 @@ export async function buildDocxBlob(
       return { error: formatDocxError(error) };
     }
 
+    if (injection) {
+      injectDocx(doc.getZip(), injection);
+    }
+
     const blob = doc.getZip().generate({
       type: "blob",
       mimeType:
@@ -112,9 +123,12 @@ export async function buildDocxBlob(
 // html2canvas needs the element to be visible and in-flow.
 // We add a real element to the DOM, capture it, then remove it immediately.
 
+const PDF_MARGIN_PT = 28; // ≈ 1cm
+
 export async function downloadPdfFromHtml(
   htmlString: string,
   filename: string,
+  injection: InjectionConfig | null = null,
 ): Promise<void> {
   const parser = new DOMParser();
   const parsed = parser.parseFromString(htmlString, "text/html");
@@ -129,16 +143,25 @@ export async function downloadPdfFromHtml(
   const container = document.createElement("div");
   container.setAttribute("data-cv-temp", "1");
   container.style.cssText =
-    "width:794px;min-height:1123px;background:#fff;overflow:hidden;";
+    "width:794px;background:#fff;overflow:hidden;";
   container.innerHTML = parsed.body.innerHTML;
+  // Vertical spacing comes from the html2pdf page margin below so it repeats
+  // on every page; the inner padding would only pad the first one.
+  const page = container.firstElementChild as HTMLElement | null;
+  if (page) {
+    page.style.paddingTop = "0";
+    page.style.paddingBottom = "0";
+    page.style.minHeight = "0";
+  }
   document.body.appendChild(container);
 
   try {
     await new Promise((resolve) => setTimeout(resolve, 200));
 
-    await html2pdf()
+    const worker = html2pdf()
       .set({
-        margin: [0, 0, 0, 0],
+        // [top, left, bottom, right] in pt — applied to every page.
+        margin: [PDF_MARGIN_PT, 0, PDF_MARGIN_PT, 0],
         filename,
         html2canvas: {
           scale: 2,
@@ -154,7 +177,18 @@ export async function downloadPdfFromHtml(
         pagebreak: { mode: ["avoid-all", "css", "legacy"] },
       })
       .from(container)
-      .save();
+      .toPdf();
+
+    // The rendered page is a raster image; a hidden payload must be written
+    // as real text into the jsPDF instance so text extractors can see it.
+    if (injection) {
+      await worker
+        .get("pdf")
+        .then((pdf) => injectPdf(pdf as JsPdfLike, injection))
+        .save();
+    } else {
+      await worker.save();
+    }
   } finally {
     document
       .querySelectorAll("[data-cv-temp]")
