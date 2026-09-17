@@ -18,6 +18,8 @@ No test framework is configured.
 
 ## Architecture
 
+The app has two tabs sharing one CV document. **Manual** is the original flow. **Com IA** generates the CV from a job description via the Claude API, then hands the result to the same document. `useCvDocument` (`src/hooks/`) owns the CV state + export handlers; `CvWorkspace` (`src/components/`) is the editor/preview/actions surface rendered by both tabs. `AiPanel` is lazy-loaded so the Anthropic SDK / pdfjs / mammoth stay out of the Manual tab's initial bundle.
+
 ### Data flow
 
 ```
@@ -25,7 +27,15 @@ JSON input → AJV validation (cv.schema.json) → CvData type
   ├─ DOCX path: fetch template → PizZip + docxtemplater → download blob
   ├─ PDF path:  renderCvHtml() → html2pdf.js (html2canvas + jsPDF) → download blob
   └─ Preview:   renderCvHtml() → iframe srcDoc
+
+AI tab: docs → browser text extraction → distill (1 call, structured output)
+        → profile.json (localStorage) → generate/refine (structured output, prompt-cached)
+        → CvData → shared preview/export above
 ```
+
+### AI modules (`src/lib/ai/`)
+
+Client-side only; key lives in `localStorage`. `extract.ts` turns PDF/DOCX/MD/TXT into compact text in the browser (originals discarded; scanned-PDF base64 kept as a `document` fallback). `profile.ts` distills docs into `profile.json` against `src/data/profile.schema.json`. Two providers behind one interface: `generate.ts`/`profile.ts` (API key, browser SDK) and `local.ts` (Claude Code CLI via the dev-only `/api/claude` endpoint in `scripts/vite-claude-plugin.mjs`, which spawns `claude -p --json-schema`; local dev only, uses the subscription quota). `generate.ts` produces/refines the CV against `cv.schema.json`; the cached prompt puts frozen instructions+schema first and `stableStringify(profile)` at the `cache_control` breakpoint, job description last. `schema.ts` strips API-unsupported JSON-Schema keywords (only for the copy sent to the model; AJV still uses the original). `cost.ts` prices usage. `storage.ts` = localStorage + IndexedDB (`idb`) + export/import. Model default `claude-sonnet-5`. No test framework — pure functions verified manually.
 
 ### Key modules
 
@@ -47,6 +57,6 @@ Templates are **not hand-edited** — they are generated programmatically by `sc
 
 ## Conventions
 
-- The app is a single `App.tsx` component with no routing or state management library.
+- `App.tsx` is a thin tabbed shell; CV state/handlers live in `hooks/useCvDocument`, the editor/preview/actions in `components/CvWorkspace`, and the AI tab in `hooks/useAiTab` + `components/ai/`. No routing or state-management library.
 - UI strings and status messages are in Portuguese.
 - Two language variants exist for CV output: pt-BR and en-US, controlled by a language selector that maps to template paths and label sets in `cv-renderer.ts`.
